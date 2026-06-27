@@ -2808,11 +2808,9 @@ local function OnFirstShow()
         visHdrDiv:SetVertexColor(VIS_GR, VIS_GG, VIS_GB, 0.5)
 
         local VIS_SECTIONS = {
-            {id = "Playerbots",            label = "Playerbots Tab"},
-            {id = "IndividualProgression", label = "Ind. Prog. Tab"},
-            {id = "LevelSync",             label = "LevelSync Tab"},
-            {id = "Notes",                 label = "Notes Tab"},
-            {id = "Group",                 label = "Group Tab"},
+            {id = "Playerbots", label = "Playerbots Tab"},
+            {id = "Notes",       label = "Notes Tab"},
+            {id = "Group",       label = "Group Tab"},
         }
 
         PBM.State.visToggleBtns = {}

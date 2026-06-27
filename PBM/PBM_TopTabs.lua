@@ -25,11 +25,9 @@ local BD_CELL = {
 local IP_R, IP_G, IP_B = 0.78, 0.61, 0.23   -- gold (matches LevelSync)
 
 local BOTTOM_TABS = {
-    { id="Playerbots",           label="Playerbots",  r=GOLD_R, g=GOLD_G, b=GOLD_B },
-    { id="IndividualProgression",label="Ind. Prog.",  r=GOLD_R, g=GOLD_G, b=GOLD_B },
-    { id="LevelSync",            label="LevelSync",   r=GOLD_R, g=GOLD_G, b=GOLD_B },
-    { id="Notes",                label="Notes",       r=GOLD_R, g=GOLD_G, b=GOLD_B },
-    { id="Group",                label="Group",       r=GOLD_R, g=GOLD_G, b=GOLD_B },
+    { id="Playerbots", label="Playerbots", r=GOLD_R, g=GOLD_G, b=GOLD_B },
+    { id="Notes",       label="Notes",     r=GOLD_R, g=GOLD_G, b=GOLD_B },
+    { id="Group",       label="Group",     r=GOLD_R, g=GOLD_G, b=GOLD_B },
 }
 
 -- ── Tab button layout (title bar row, right of Clear buttons) ─
@@ -93,9 +91,6 @@ function PBM.ActivateBottomTab(id)
     PBM.State.activeTab = id
     PBM.UpdateTabs()
     PBM.RefreshRows()
-    if id == "LevelSync" and PBM.LevelSyncAutoRefresh then
-        PBM.LevelSyncAutoRefresh()
-    end
 end
 
 -- ── Public: show/hide tab buttons and reflow visible ones ─────
@@ -276,18 +271,7 @@ function PBM.BuildBottomTabs(parent, fl)
     PBM.State.bottomTabPanels["Playerbots"] = pbPanel
     PBM.BuildPlayerbotsPanel(pbPanel, ctx)
 
-    -- ── Individual Progression panel (full height, corrected width) ──
-    local ipPanel = MakeContentFrame("PBMTabPanel_IndividualProgression", parent, fl,
-                                     "Individual Progression", true, GOLD_R, GOLD_G, GOLD_B)
-    PBM.State.bottomTabPanels["IndividualProgression"] = ipPanel
-    PBM.BuildIPProgressionPanel(ipPanel, ctx)
-
-    -- ── LevelSync panel (full height, corrected width) ───────────
-    local lsPanel = MakeContentFrame("PBMTabPanel_LevelSync", parent, fl, "LevelSync", true, GOLD_R, GOLD_G, GOLD_B)
-    PBM.State.bottomTabPanels["LevelSync"] = lsPanel
-    PBM.BuildLevelSyncPanel(lsPanel, ctx)
-
-    -- ── Notes panel (gold header) ─────────────────────────────
+   -- ── Notes panel (gold header) ─────────────────────────────
     local notesPanel = MakeContentFrame("PBMTabPanel_Notes", parent, fl, "Notes", false, GOLD_R, GOLD_G, GOLD_B)
     PBM.State.bottomTabPanels["Notes"] = notesPanel
     PBM.BuildNotesPanel(notesPanel, ctx)
